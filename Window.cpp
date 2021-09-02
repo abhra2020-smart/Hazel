@@ -68,6 +68,23 @@ bool Window::init(LPCWSTR title, int width, int height)
 	return true;
 }
 
+bool Window::createBtn(LPCWSTR text, int posx, int posy, int width, int height)
+{
+	HWND hwndButton = CreateWindow(
+		L"BUTTON",
+		text,
+		WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,  // Styles 
+		posx - (width / 2),
+		posy - (height / 2),
+		width,
+		height,
+		hwnd,
+		NULL,
+		(HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE),
+		NULL);
+	return true;
+}
+
 bool Window::broadcast()
 {
 	MSG msg;

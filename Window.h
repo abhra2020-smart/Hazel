@@ -7,6 +7,7 @@ class Window
         Window();
         ~Window();
         bool init(LPCWSTR title, int width, int height);
+        bool createBtn(LPCWSTR text, int posx, int posy, int width, int height);
         bool broadcast();
         bool isRunning();
         bool release();

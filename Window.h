@@ -6,6 +6,7 @@ class Window
     public:
         Window();
         ~Window();
+
         bool init(LPCWSTR title, int width, int height);
         bool createBtn(LPCWSTR text, int posx, int posy, int width, int height);
         bool broadcast();
@@ -19,4 +20,3 @@ class Window
         HWND hwnd;
         bool b_isRunning;
 };
-

@@ -15,6 +15,9 @@ Window::~Window()
 }
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+	PAINTSTRUCT ps;
+	HDC hdc;
+
 	switch (msg) {
 		case WM_CREATE:
 		{
@@ -22,6 +25,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 			SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)window);
 			window->onCreate();
 			break;
+		}
+
+		case WM_PAINT:
+		{
+			hdc = BeginPaint(hwnd, &ps);
+			TextOut(hdc, 350, 100, L"   Hazel Hub   ", 16);
+			EndPaint(hwnd, &ps);
+			return 0L;
 		}
 
 		case WM_DESTROY:
@@ -82,6 +93,7 @@ bool Window::createBtn(LPCWSTR text, int posx, int posy, int width, int height)
 		NULL,
 		(HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE),
 		NULL);
+	if (!hwndButton) return false;
 	return true;
 }
 

@@ -9,7 +9,7 @@ int __stdcall WinMain(
 {
     AppWindow app;
     if (app.init(L"Hazel Hub", 800, 600) &&
-        app.createBtn(L"Editor", 400, 300, 100, 50)) {
+        app.createBtn(L"Editor", 400, 200, 100, 50)) {
         while (app.isRunning())
         {
             app.broadcast();
